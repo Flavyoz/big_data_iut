@@ -1,6 +1,5 @@
 from mrjob.job import MRJob
 from mrjob.step import MRStep
-import html
 
 class TagCounts(MRJob):
     def steps(self):
@@ -12,7 +11,6 @@ class TagCounts(MRJob):
     def mapper_get_tags(self, _, line):
         try:
             userID, movieID, tag, timestamp = line.split(',')
-            tag = html.unescape(tag)
             yield movieID, 1
         except Exception:
             pass
