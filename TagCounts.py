@@ -10,13 +10,13 @@ class TagCounts(MRJob):
 
     def mapper_get_tags(self, _, line):
         try:
-            (userID, movieID, tag, timestamp) = line.split(',')
-            yield tag, 1
+            userID, movieID, tag, timestamp = line.split(',')
+            yield movieID, 1
         except Exception:
             pass
 
-    def reducer_count_tags(self, tag, counts):
-        yield tag, sum(counts)
+    def reducer_count_tags(self, movieID, counts):
+        yield movieID, sum(counts)
 
 if __name__ == '__main__':
     TagCounts.run()
