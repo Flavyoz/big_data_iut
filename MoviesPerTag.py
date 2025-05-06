@@ -19,4 +19,4 @@ class MoviePerTag(MRJob):
         yield tag, sum(values)
 
 if __name__ == '__main__':
-    TagCounts.run()
+    MoviePerTag.run()
